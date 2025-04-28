@@ -1,6 +1,6 @@
 # 📣 Sayo — Minimal Micro Twitter Clone
 
-![Sayo Logo](./assets/sayo-logo.png)
+![Sayo Logo](./assets/sayo_logo.jpg)
 
 [![License](https://img.shields.io/github/license/makalin/Sayo)](https://github.com/makalin/Sayo/blob/main/LICENSE)
 [![Build](https://img.shields.io/badge/build-passing-brightgreen)]()
@@ -23,6 +23,9 @@ Sayo is a lightweight **micro social network** where you can **Say Out** your th
 - 🗄️ Embedded **SQLite** database
 - 🔒 JWT Authentication
 - 🌐 Easy deployment via Docker + Caddy
+- 🌓 Dark/Light theme support
+- 🔄 Real-time updates with HTMX
+- 👥 User profiles and friend system
 
 ---
 
@@ -30,7 +33,7 @@ Sayo is a lightweight **micro social network** where you can **Say Out** your th
 - **Backend:** Go + Fiber  
 - **Frontend:** HTMX + TailwindCSS  
 - **Database:** SQLite  
-- **Auth:** JWT  
+- **Auth:** JWT + bcrypt  
 - **Deploy:** Docker + Caddy Server  
 
 ---
@@ -38,11 +41,28 @@ Sayo is a lightweight **micro social network** where you can **Say Out** your th
 ## 📂 Project Structure
 ```
 sayo/
-├── backend/          # Go Fiber API
-├── frontend/         # HTMX + Tailwind templates
-├── database/         # SQLite schema & migrations
-├── assets/           # Logos, images
-├── docker-compose.yml
+├── backend/
+│   ├── main.go           # Main application entry
+│   ├── models/           # Database models
+│   │   └── models.go     # User, Say, and Friend models
+│   ├── auth/             # Authentication
+│   │   └── auth.go       # JWT and password handling
+│   └── handlers/         # API handlers
+│       └── handlers.go   # Route handlers
+├── frontend/
+│   ├── index.html        # Main page
+│   ├── login.html        # Login page
+│   ├── register.html     # Registration page
+│   ├── templates/        # HTML templates
+│   │   └── say.html      # Say template
+│   └── css/
+│       └── styles.css    # Custom styles
+├── database/
+│   └── schema.sql        # Database schema
+├── assets/               # Static assets
+├── Dockerfile           # Backend container
+├── docker-compose.yml   # Service definitions
+├── Caddyfile           # Reverse proxy config
 └── README.md
 ```
 
@@ -50,9 +70,20 @@ sayo/
 
 ## 🚧 Installation & Run
 
+1. Clone the repository:
 ```bash
 git clone https://github.com/makalin/Sayo.git
 cd Sayo
+```
+
+2. Set up environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your configuration
+```
+
+3. Start the application:
+```bash
 docker-compose up --build
 ```
 
@@ -60,9 +91,33 @@ Access at: [http://localhost:8080](http://localhost:8080)
 
 ---
 
+## 🔑 Authentication
+- JWT-based authentication
+- Secure password hashing with bcrypt
+- Protected API endpoints
+- Session management
+
+## 📝 Features in Detail
+- **User Management**
+  - Registration and login
+  - Profile customization
+  - Friend system
+- **Content**
+  - Public and private posts
+  - Real-time updates
+  - Responsive design
+- **UI/UX**
+  - Dark/Light theme
+  - Mobile-friendly
+  - Minimal and clean interface
+
+---
+
 ## ⚡ Roadmap
 - [x] Core "Say" system
 - [x] Public / Private modes
+- [x] User authentication
+- [x] Dark theme support
 - [ ] Friend & Circle management
 - [ ] Notifications & Mentions
 - [ ] UI/UX enhancements

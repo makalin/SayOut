@@ -1,0 +1,21 @@
+:80 {
+    encode gzip
+
+    # Serve static files
+    handle /css/* {
+        root * /app/frontend
+        file_server
+    }
+
+    # Proxy API requests to the backend
+    handle /api/* {
+        reverse_proxy app:3000
+    }
+
+    # Serve the frontend
+    handle {
+        root * /app/frontend
+        try_files {path} /index.html
+        file_server
+    }
+} 

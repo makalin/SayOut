@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayo - Say Out Your Thoughts</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            100: '#1a1a1a',
+                            200: '#2d2d2d',
+                            300: '#404040',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-gray-100 dark:bg-dark-100 min-h-screen text-gray-800 dark:text-gray-200">
+    <nav class="bg-white dark:bg-dark-200 shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <a href="/" class="text-xl font-bold text-gray-800 dark:text-white">Sayo</a>
+                    <button onclick="document.documentElement.classList.toggle('dark')" 
+                            class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/login" class="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white">Login</a>
+                    <a href="/register" class="btn-primary">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <!-- Say Form -->
+        <div class="card dark:bg-dark-200 mb-8">
+            <form hx-post="/api/says" hx-trigger="submit" class="space-y-4">
+                <textarea name="content" class="input-field dark:bg-dark-300 dark:border-dark-300" 
+                          placeholder="What's on your mind?" rows="3"></textarea>
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="is_private" class="rounded">
+                        <span class="text-sm">Private</span>
+                    </label>
+                    <button type="submit" class="btn-primary">Say It</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Says Feed -->
+        <div id="says-feed" class="space-y-4">
+            <!-- Says will be loaded here -->
+        </div>
+    </main>
+
+    <footer class="bg-white dark:bg-dark-200 shadow-lg mt-8">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <p class="text-center text-gray-600 dark:text-gray-400">© 2024 Sayo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Load says on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            htmx.ajax('GET', '/api/says', { target: '#says-feed' });
+        });
+    </script>
+</body>
+</html> 

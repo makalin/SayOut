@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sayo</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            100: '#1a1a1a',
+                            200: '#2d2d2d',
+                            300: '#404040',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-gray-100 dark:bg-dark-100 min-h-screen text-gray-800 dark:text-gray-200">
+    <nav class="bg-white dark:bg-dark-200 shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <a href="/" class="text-xl font-bold text-gray-800 dark:text-white">Sayo</a>
+                    <button onclick="document.documentElement.classList.toggle('dark')" 
+                            class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-md mx-auto px-4 py-8">
+        <div class="card dark:bg-dark-200">
+            <h1 class="text-2xl font-bold mb-6">Login to Sayo</h1>
+            <form hx-post="/api/login" hx-trigger="submit" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Email</label>
+                    <input type="email" name="email" class="input-field dark:bg-dark-300 dark:border-dark-300" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Password</label>
+                    <input type="password" name="password" class="input-field dark:bg-dark-300 dark:border-dark-300" required>
+                </div>
+                <button type="submit" class="btn-primary w-full">Login</button>
+            </form>
+            <p class="mt-4 text-center text-sm">
+                Don't have an account? 
+                <a href="/register" class="text-blue-500 hover:text-blue-600">Register</a>
+            </p>
+        </div>
+    </main>
+</body>
+</html> 

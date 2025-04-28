@@ -1,0 +1,48 @@
+/* Custom styles for Sayo */
+@layer components {
+    .btn-primary {
+        @apply bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors;
+    }
+
+    .btn-secondary {
+        @apply bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors;
+    }
+
+    .input-field {
+        @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500
+               dark:bg-dark-300 dark:border-dark-300 dark:text-white;
+    }
+
+    .card {
+        @apply bg-white rounded-lg shadow-md p-6 dark:bg-dark-200;
+    }
+
+    /* Dark theme transitions */
+    .dark {
+        @apply transition-colors duration-200;
+    }
+
+    /* Form styles */
+    form {
+        @apply space-y-4;
+    }
+
+    label {
+        @apply block text-sm font-medium text-gray-700 dark:text-gray-300;
+    }
+
+    /* Link styles */
+    a {
+        @apply transition-colors duration-200;
+    }
+
+    /* Button hover states */
+    button:hover {
+        @apply transition-colors duration-200;
+    }
+
+    /* Input focus states */
+    input:focus, textarea:focus {
+        @apply transition-colors duration-200;
+    }
+} 
