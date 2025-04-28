@@ -1,6 +1,4 @@
-# 📣 Sayo — Minimal Micro Twitter Clone
-
-![Sayo Logo](./assets/sayo_logo.jpg)
+# 📣 SayOut — Minimal Micro Twitter Clone
 
 [![License](https://img.shields.io/github/license/makalin/Sayo)](https://github.com/makalin/Sayo/blob/main/LICENSE)
 [![Build](https://img.shields.io/badge/build-passing-brightgreen)]()
@@ -11,7 +9,7 @@
 
 ---
 
-Sayo is a lightweight **micro social network** where you can **Say Out** your thoughts — either to the **public** or just to your **friends**. Designed for minimal resources with blazing fast performance.
+SayOut is a lightweight **micro social network** where you can **Say Out** your thoughts — either to the **public** or just to your **friends**. Designed for minimal resources with blazing fast performance.
 
 ---
 
@@ -40,7 +38,7 @@ Sayo is a lightweight **micro social network** where you can **Say Out** your th
 
 ## 📂 Project Structure
 ```
-sayo/
+SayOut/
 ├── backend/
 │   ├── main.go           # Main application entry
 │   ├── models/           # Database models
@@ -72,8 +70,8 @@ sayo/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/makalin/Sayo.git
-cd Sayo
+git clone https://github.com/makalin/SayOut.git
+cd SayOut
 ```
 
 2. Set up environment variables:
@@ -131,7 +129,7 @@ Pull requests are welcome! Open an issue for feature suggestions or bug reports.
 ---
 
 ## 📄 License
-[MIT License](https://github.com/makalin/Sayo/blob/main/LICENSE)
+[MIT License](https://github.com/makalin/SayOut/blob/main/LICENSE)
 
 ---
 
